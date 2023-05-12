@@ -5,4 +5,5 @@ from django.contrib.auth.models import AbstractUser
 
 
 class CustomUser(AbstractUser):
-    pass
+    avatar = models.ImageField(upload_to='media/', null=True)
+    is_contact = models.BooleanField(default=False)

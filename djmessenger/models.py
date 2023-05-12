@@ -7,5 +7,5 @@ from account.admin import CustomUser
 
 class Message(models.Model):
     message = models.TextField(max_length=200)
-    date = models.DateTimeField(auto_now=True)
-    username = models.ForeignKey(CustomUser, on_delete=models.CASCADE())
+    date = models.DateTimeField(auto_now_add=True)
+    
