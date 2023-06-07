@@ -162,21 +162,19 @@ body{
     height: 975px;
 }
 
-.contacts_list{
+.user_list{
     float: left;
     width: 410px;
     height: 970px;
     background: rgba(170, 152, 185, 0.13);
     border-right: 4px solid #4278B6;
-    box-shadow: inset -26px 18px 22px rgba(0, 0, 0, 0.25);
-    border-radius: 0px 9px 0px 0px;
+     border-radius: 0px 9px 0px 0px;
 
 }
-    .contacts_list input{
+    .user_list input{
         width: 350px;
         height: 35px;
         margin-left: 7%;
-        margin-top: 5%;
         border-radius: 9px;
         border: none;
         outline: none;
@@ -210,7 +208,7 @@ body{
 
     .chat{
         width: auto;
-        height: 835px;
+        height: 800px;
         background: #151515;
         color: white;
     }
@@ -220,32 +218,39 @@ body{
             overflow: auto;
             float: left;
             margin-left: 10%;
-            height: 836px;
+            height: 800px;
+            width: 1000px;
         }
             .message_object{
+                margin-top: 20px;
+                margin-left: 80%;
                 width: fit-content;
                 padding: 10px;
-                margin: 10px 0;
+                background: rgba(170, 152, 185, 0.28);
+                border-radius: 9px;
+            }
+            .message_object_friend{
+                float: left;
+                width: fit-content;
+                padding: 10px;
+                margin-top: 20px;
                 background: rgba(170, 152, 185, 0.28);
                 border-radius: 9px;
             }
 
 
-.send_message{
-
-}
     .send_message form{
-        float: left;
         height: 2px;
+        width: 76%;
     }
         .send_message label{
             display: none;
         }
             .send_message textarea{
                 background: rgba(170, 152, 185, 0.28);
-                border-radius: 9px 0 0 0;
+                border-radius: 9px 0 0 9px;
                 border: none;
-                width: 1427px;
+                width: 600px;
                 height: 40px;
                 resize: none;
                 font-size: 25px;
@@ -253,12 +258,13 @@ body{
                 outline: none;
                 padding-left: 10px;
                 padding-top: 4px;
-            }
+                margin-left: 25%;
+             }
 
                 .send_message button{
+                    float: right;
                     width: 82px;
                     height: 40px;
-                    float: right;
                     background: rgba(86, 164, 255, 0.69);
                     border-radius: 0px 9px 9px 0px;
                     border: none;
@@ -290,5 +296,73 @@ body{
     .contacts_object p, a{
         margin-left: 3%;
         margin-top: 20px;
+        text-decoration: none;
+        color: white;
+    }
 
+
+    .link{
+        margin-left: 0;
+        font-size: 25px;
+        text-decoration: none;
+        color: white;
+    }
+    .link:before {
+        content: '';
+        width: 1510px;
+        position: absolute;
+        height: 100px;
+        top: 2px;
+        left: 410px;
+    }
+
+
+     .modal {
+         display: none;
+         position: fixed;
+         width: 100%;
+         height: 100%;
+         overflow: auto;
+    }
+.user_description{
+    margin-top: 15%;
+    margin-left: 15%;
+    padding: 20px;
+    width: 20%;
+    height: 40%;
+    background-color: #3a3a3a;
+    border: 1px solid #888;
+    border-radius: 9px;
+}
+
+.contacts{
+    padding-top: 2%;
+    width: 405px;
+    height: 80px;
+    margin-bottom: 5%   ;
+    background-color: #1c1b1b;
+}
+    .contacts img{
+        margin-top: 2%;
+        float: left;
+        width: 55px;
+        height: 45px;
+        filter: invert(1);
+    }
+    .contacts h3{
+        float: left;
+        padding-top: 4%;
+    }
+.contacts_list{
+    display: none;
+    float: left;
+    width: 410px;
+    height: 100px;
+    border-right: 4px solid #4278B6;
+}
+    .contacts_list img{
+        margin-top: 2px;
+        filter: none;
+        width: 55px;
+        height: 55px;
     }

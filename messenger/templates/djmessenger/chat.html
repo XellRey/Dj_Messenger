@@ -1,47 +1,37 @@
 {% extends '_base.html' %}
+{% load static %}
 {% block content %}
     <div class="chat_block">
-
-        <div class="contacts_list">
+        <div class="user_list">
             <div class="profile">
                 <img src="{{request.user.avatar.url}}">
                 <h3>{{request.user.username}}</h3>
             </div>
+            <div class="contacts">
+                <img src="{% static '/img/contacts_icon.png' %}">
+                <h3><a id="contacts_btn" href="#">Контакты</a></h3>
+                <div id="contacts_list" class="contacts_list">
+                    {% for f in friends %}
+                        <div class="touch">
+                            <div class="contacts_object">
+                                <img src="{{f.avatar.url}}">
+                                <p><a href="{% url 'user_chat' f.id %}">{{f.username}}</a></p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
                 <form method="get">
                     <input class="search_contacts" name="q" placeholder="Search">
                 </form>
-                {% for u in contacts_list %}
-                <div class="touch">
-                    <div class="contacts_object">
-                        <img src="{{user.avatar.url}}">
-                        <p><a href="#">{{u.username}}</a> </p>
+                {% for u in user_list %}
+                    <div class="touch">
+                        <div class="contacts_object">
+                            <img src="{{u.avatar.url}}">
+                            <p><a href="{% url 'user_chat' u.id %}">{{u.username}}</a> </p>
+                        </div>
                     </div>
-                </div>
                 {% endfor %}
-
         </div>
-
-        <div class="current_contact_chat">
-            <img  class="img" src="{{user.avatar.url}}" alt="">
-            <h3>{{user.username}}</h3>
-        </div>
-        <div class="chat">
-            <div class="message_list">
-                    {% for m in message_list %}
-                    <div class="message_object">
-                        <p>{{m.message}}</p>
-                        <p>{{m.date}}</p>
-                    </div>
-                    {% endfor %}
-            </div>
-        </div>
-        <div class="send_message">
-            <form method="post">
-                {% csrf_token %}
-                {{message_form}}
-                <button type="submit">Send</button>
-            </form>
-        </div>
-
     </div>
 {% endblock %}

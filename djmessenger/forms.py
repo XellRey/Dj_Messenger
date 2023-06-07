@@ -8,3 +8,5 @@ class MessageForm(forms.ModelForm):
         model = Message
         fields = ('message',)
         date = datetime.datetime.now()
+
+

@@ -16,5 +16,5 @@ class CustomUserAdmin(UserAdmin):
     list_editable = ["avatar"]
 
 
-admin.site.register(CustomUser, CustomUserAdmin)
+admin.site.register(CustomUser)
 
