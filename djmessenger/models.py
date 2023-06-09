@@ -12,5 +12,8 @@ class Message(models.Model):
     msg_receiver = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='msg_receiver')
 
 
+class File_message(models.Model):
+    file = models.FileField(upload_to='uploads/')
+
 
 

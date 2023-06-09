@@ -1,11 +1,11 @@
 {% extends '_base.html' %}
 {% load static %}
 {% block content %}
-    <div class="chat_block">
-        <div class="user_list">
+<div class="profile_block">
+    <div class="user_list">
             <div class="profile">
                 <img src="{{request.user.avatar.url}}">
-                <a href="{% url 'profile' %}"><h3>{{request.user.username}}</h3></a>
+                <h3>{{request.user.username}}</h3>
             </div>
             <div class="contacts">
                 <img src="{% static '/img/contacts_icon.png' %}">
@@ -32,9 +32,27 @@
                         </div>
                     </div>
                 {% endfor %}
+
         </div>
-        <div class="block2">
-            select a chat
+
+        <div class="account_block">
+            <div class="profile">
+                <img src="{{request.user.avatar.url}}">
+                <h3>{{request.user.username}}</h3>
+                <h4>{{request.user.description}}</h4>
+            </div>
+            <div class="profile_description">
+                <h3>Email: {{request.user.email}}</h3>
+                <h3>First Name: {{request.user.first_name}}</h3>
+                <h3>Last Name: {{request.user.last_name}}</h3>
+                <div class="edit_profile">
+                     <h3><a>Edit Profile</a></h3>
+                </div>
+                <div class="edit_profile">
+                     <h3><a>Blocked Users</a></h3>
+                </div>
+            </div>
         </div>
-    </div>
+
+</div>
 {% endblock %}

@@ -9,6 +9,7 @@ class CustomUser(AbstractUser):
     is_contact = models.BooleanField(default=False)
     username = models.CharField(unique=True)
     contact = models.ManyToManyField('Contact', related_name='my_contacts')
+    description = models.CharField(max_length=70, null=True)
 
 
 class Contact(models.Model):

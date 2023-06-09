@@ -5,7 +5,7 @@
         <div class="user_list">
             <div class="profile">
                 <img src="{{request.user.avatar.url}}">
-                <h3>{{request.user.username}}</h3>
+                <h3><a href="{% url 'profile' %}">{{request.user.username}}</a></h3>
             </div>
             <div class="contacts">
                 <img src="{% static '/img/contacts_icon.png' %}">
@@ -16,7 +16,6 @@
                             <div class="contacts_object">
                                 <img src="{{f.avatar.url}}">
                                 <p><a href="{% url 'user_chat' f.id %}">{{f.username}}</a></p>
-
                             </div>
                         </div>
                     {% endfor %}
@@ -44,16 +43,12 @@
 <!--                        {% csrf_token %}-->
 <!--                        {{add_contact_form}}-->
 <!--                    </form>-->
-
                      <img src="{{friend.avatar.url}}">
                      <h3>{{friend.username}}</h3>
                      <h5>{{friend.last_login}}</h5>
                  </div>
             </div>
         </div>
-
-
-
 
         <div class="chat">
             <div class="message_list">
@@ -73,6 +68,11 @@
             </div>
         </div>
         <div class="send_message">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{file_form}}
+                <button type="submit"></button>
+            </form>
             <form method="post">
                 {% csrf_token %}
                 {{message_form}}
