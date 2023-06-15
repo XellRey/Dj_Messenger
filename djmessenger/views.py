@@ -3,6 +3,9 @@ from .forms import MessageForm, FileForm
 from .models import Message
 from django.db.models import Q
 from account.models import CustomUser
+from django.http import JsonResponse
+import json
+import datetime
 # Create your views here.
 
 
@@ -43,7 +46,8 @@ def user_chat(request, userid):
     user = request.user
     friend = CustomUser.objects.get(id=userid)
     friends = user.contact.all()
-    message_list = Message.objects.all()
+    message_list = Message.objects.order_by('date')
+    rec_message_list = Message.objects.filter(msg_sender=friend, msg_receiver=user)
 
     # Search
     if 'q' in request.GET:
@@ -61,6 +65,7 @@ def user_chat(request, userid):
             chat_message.msg_sender = user
             chat_message.msg_receiver = friend
             chat_message.save()
+            return redirect("user_chat", friend.id)
     form = MessageForm
 
     # Send files
@@ -78,5 +83,26 @@ def user_chat(request, userid):
         'friends': friends,
         'user_list': user_list,
         'file_form': file_form,
+        'num': rec_message_list.count(),
     }
     return render(request, 'djmessenger/user_chat.html', data)
+
+
+def sent_messages(request, userid):
+    user = request.user
+    friend = CustomUser.objects.get(id=userid)
+    data = json.loads(request.body)
+    new_chat = data["msg"]
+    new_chat_message = Message.objects.create(message=new_chat, msg_sender=user, msg_receiver=friend)
+    return JsonResponse(new_chat_message.body, safe=False)
+
+
+def received_messages(request, userid):
+    user = request.user
+    friend = CustomUser.objects.get(id=userid)
+    arr = []
+    message_list = Message.objects.filter(msg_sender=friend, msg_receiver=user)
+    for m in message_list:
+        arr.append(m.message)
+    return JsonResponse(arr, safe=False)
+

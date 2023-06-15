@@ -241,6 +241,7 @@ body{
             width: 1000px;
         }
             .message_object{
+                float: right;
                 margin-top: 20px;
                 margin-left: 80%;
                 width: fit-content;
