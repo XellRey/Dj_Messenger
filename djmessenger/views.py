@@ -4,8 +4,8 @@ from .models import Message
 from django.db.models import Q
 from account.models import CustomUser
 from django.http import JsonResponse
+from account.forms import CustomUserChangeForm
 import json
-import datetime
 # Create your views here.
 
 
@@ -21,13 +21,26 @@ def profile_view(request):
     else:
         user_list = CustomUser.objects.all()
 
+    # Edit_profile
+    user_upd_form = CustomUserChangeForm(instance=request.user)
+    if request.method == 'POST':
+        user_upd_form = CustomUserChangeForm(request.POST, request.FILES, instance=request.user)
+        if user_upd_form.is_valid():
+            user_upd_form.save()
+            return redirect('profile')
+        else:
+            user_upd_form = CustomUserChangeForm(instance=request.user)
     data = {
         'user_list': user_list,
+        'user_upd_form': user_upd_form
     }
     return render(request, 'djmessenger/profile.html', data)
 
 
 def chat_view(request):
+    user = request.user
+    friends = user.contacts.all
+    print(friends)
     # Search
     if 'q' in request.GET:
         q = request.GET['q']
@@ -38,6 +51,8 @@ def chat_view(request):
 
     data = {
         'user_list': user_list,
+        'friends': friends,
+        'user': user,
     }
     return render(request, 'djmessenger/chat.html', data)
 
@@ -45,7 +60,8 @@ def chat_view(request):
 def user_chat(request, userid):
     user = request.user
     friend = CustomUser.objects.get(id=userid)
-    friends = user.contact.all()
+    friends = user.contacts.all()
+    print(friends)
     message_list = Message.objects.order_by('date')
     rec_message_list = Message.objects.filter(msg_sender=friend, msg_receiver=user)
 
@@ -57,7 +73,7 @@ def user_chat(request, userid):
     else:
         user_list = CustomUser.objects.all()
 
-    # Send message
+    # Send_message
     if request.method == 'POST':
         form = MessageForm(request.POST)
         if form.is_valid:
@@ -65,10 +81,8 @@ def user_chat(request, userid):
             chat_message.msg_sender = user
             chat_message.msg_receiver = friend
             chat_message.save()
-            return redirect("user_chat", friend.id)
     form = MessageForm
-
-    # Send files
+    # Send_files
     if request.method == 'POST':
         file_form = FileForm(request.POST, request.FILES)
         if file_form.is_valid():
@@ -88,6 +102,7 @@ def user_chat(request, userid):
     return render(request, 'djmessenger/user_chat.html', data)
 
 
+# Async
 def sent_messages(request, userid):
     user = request.user
     friend = CustomUser.objects.get(id=userid)
@@ -105,4 +120,3 @@ def received_messages(request, userid):
     for m in message_list:
         arr.append(m.message)
     return JsonResponse(arr, safe=False)
-

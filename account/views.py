@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
-from django.urls import reverse_lazy
-from django.views import generic
+from django.views.generic import UpdateView
 from .forms import CustomUserCreationForm
 from django.contrib.auth import login
+from .forms import CustomUserChangeForm
 # Create your views here.
 
 
@@ -19,6 +19,3 @@ def sing_up_view(request):
             return redirect('home')
     form = CustomUserCreationForm
     return render(request, 'registration/signup.html', context={"register_form": form})
-
-
-

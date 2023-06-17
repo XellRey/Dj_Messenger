@@ -5,17 +5,17 @@
     <div class="user_list">
             <div class="profile">
                 <img src="{{request.user.avatar.url}}">
-                <h3>{{request.user.username}}</h3>
+                <h3><a href="{% url 'chat' %}">{{request.user.username}}</a></h3>
             </div>
             <div class="contacts">
                 <img src="{% static '/img/contacts_icon.png' %}">
-                <h3><a id="contacts_btn" href="#">Контакты</a></h3>
+                <h3><a id="contacts_btn" href="#">Friends</a></h3>
                 <div id="contacts_list" class="contacts_list">
-                    {% for f in friends %}
+                    {% for friend in friends %}
                         <div class="touch">
                             <div class="contacts_object">
-                                <img src="{{f.avatar.url}}">
-                                <p><a href="{% url 'user_chat' f.id %}">{{f.username}}</a></p>
+                                <img src="{{friend.profile.avatar.url}}">
+                                <p><a href="{% url 'user_chat' friend.profile.id %}">{{friend.profile.username}}</a></p>
                             </div>
                         </div>
                     {% endfor %}
@@ -45,8 +45,23 @@
                 <h3>Email: {{request.user.email}}</h3>
                 <h3>First Name: {{request.user.first_name}}</h3>
                 <h3>Last Name: {{request.user.last_name}}</h3>
-                <div class="edit_profile">
-                     <h3><a>Edit Profile</a></h3>
+                <div class="edit_profile" >
+                    <h3><a class="profile_link" href="#" id="edit_profile_btn">Edit Profile</a></h3>
+                    <transition name="slide-fade">
+                    <div id='edit_block' class="edit_block">
+                         <div class="profile">
+                            <img src="{{request.user.avatar.url}}">
+
+                         </div>
+                        <div class="edit">
+                            <form method="post">
+                                {% csrf_token %}
+                                {{ user_upd_form }}
+                                <button type="submit">Save</button>
+                            </form>
+                        </div>
+                    </div>
+                    </transition>
                 </div>
                 <div class="edit_profile">
                      <h3><a>Blocked Users</a></h3>
@@ -55,4 +70,5 @@
         </div>
 
 </div>
+<script src="{% static 'js/edit_user_modal.js' %}"></script>
 {% endblock %}

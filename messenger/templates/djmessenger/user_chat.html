@@ -9,13 +9,13 @@
             </div>
             <div class="contacts">
                 <img src="{% static '/img/contacts_icon.png' %}">
-                <h3><a id="contacts_btn" href="#">Контакты</a></h3>
+                <h3><a id="contacts_btn" href="#">Friends</a></h3>
                 <div id="contacts_list" class="contacts_list">
-                    {% for f in friends %}
+                    {% for friend in friends %}
                         <div class="touch">
                             <div class="contacts_object">
-                                <img src="{{f.avatar.url}}">
-                                <p><a href="{% url 'user_chat' f.id %}">{{f.username}}</a></p>
+                                <img src="{{friend.contact.avatar.url}}">
+                                <p><a href="{% url 'user_chat' friend.profile.id %}">{{friend.profile.username}}</a></p>
                             </div>
                         </div>
                     {% endfor %}
@@ -65,14 +65,15 @@
                             </div>
                         {% endif %}
                     {% endfor %}
-                 <div class="message_object" id ="message_object" style="display: none">
             </div>
         </div>
+            <button id="scrollButton"> ВНИИИИИЗЗЗСЫСЫС</button>
+            <script src="{% static 'js/scroll_to_bottom.js' %}"></script>
         <div class="send_message" id="msg_body">
             <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{file_form}}
-                <button type="submit"></button>
+
             </form>
             <form method="post" id="send_msg">
                 {% csrf_token %}
@@ -82,11 +83,12 @@
         </div>
     </div>
     </div>
+
+
 <script src="{% static 'js/script.js' %}"></script>
-
-
-<script type="text/javascript" >
-function getCookie(name) {
+<script src="{% static 'js/send_message.js' %}"></script>
+<script>
+    function getCookie(name) {
         let cookieValue = null;
         if (document.cookie && document.cookie !== '') {
             const cookies = document.cookie.split(';');

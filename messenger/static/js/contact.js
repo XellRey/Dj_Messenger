@@ -1,4 +1,3 @@
-//Contact_list
 var cnt_list = document.getElementById("contacts_list");
 var cnt_btn = document.getElementById("contacts_btn");
 let isOpen = false;
