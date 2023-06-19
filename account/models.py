@@ -5,11 +5,11 @@ from django.contrib.auth.models import AbstractUser
 
 
 class CustomUser(AbstractUser):
-    avatar = models.ImageField(upload_to='media/', null=True, default='media/default/no-avatar.png')
+    avatar = models.ImageField(upload_to='user_avatar/', default='default/no-avatar.png')
     is_contact = models.BooleanField(default=False)
     username = models.CharField(unique=True)
     contacts = models.ManyToManyField('Contact', related_name='my_contacts')
-    description = models.CharField(max_length=70, null=True)
+    description = models.CharField(max_length=70, null=True, blank=True)
 
 
 class Contact(models.Model):

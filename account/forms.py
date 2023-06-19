@@ -13,7 +13,7 @@ class CustomUserCreationForm(UserCreationForm):
 class CustomUserChangeForm(UserChangeForm):
     class Meta:
         model = get_user_model()
-        fields = ('email', 'username', 'first_name', 'last_name', 'description',)
+        fields = ('email', 'username', 'first_name', 'last_name', 'description', 'avatar')
 
 
 class AddToContact(forms.ModelForm):

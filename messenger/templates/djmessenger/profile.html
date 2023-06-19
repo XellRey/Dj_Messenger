@@ -51,10 +51,9 @@
                     <div id='edit_block' class="edit_block">
                          <div class="profile">
                             <img src="{{request.user.avatar.url}}">
-
                          </div>
                         <div class="edit">
-                            <form method="post">
+                            <form method="post" enctype="multipart/form-data">
                                 {% csrf_token %}
                                 {{ user_upd_form }}
                                 <button type="submit">Save</button>

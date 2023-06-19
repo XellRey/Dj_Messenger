@@ -1,8 +1,6 @@
 from django.shortcuts import render, redirect
-from django.views.generic import UpdateView
 from .forms import CustomUserCreationForm
 from django.contrib.auth import login
-from .forms import CustomUserChangeForm
 # Create your views here.
 
 

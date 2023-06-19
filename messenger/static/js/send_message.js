@@ -1,14 +1,16 @@
-const messageInput = document.getElementById('message');
-const submitButton = document.getElementById('submit');
+function checkTextLength() {
+  var submitButton = document.getElementById("submit");
 
-submitButton.addEventListener('click', function(event) {
-  const maxLength = 200;
-  console.log("sadas");
-  const currentLength = messageInput.value.length;
-  console.log(currentLength);
+  var textArea = document.getElementById("id_message").value;
+  var characterCount = textArea.length + (textArea.match(/\n/g) || []).length;
 
-if (currentLength > maxLength) {
-    event.preventDefault();
-    alert('фыфффвцфцф');
+  if (characterCount < 200) {
+    submitButton.classList.remove("inactive");
+    submitButton.classList.add("active");
+    submitButton.disabled = false;
+  } else {
+    submitButton.classList.remove("active");
+    submitButton.classList.add("inactive");
+    submitButton.disabled = true;
   }
-});
+}

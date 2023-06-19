@@ -9,9 +9,19 @@
 }
 
 body{
+    width: 1900px;
+    height: 950px;
     font-family: 'Alata', sans-serif;
     background: #151515;
     background-size: cover;
+}
+
+.container{
+    width: 1900px;
+    height: 950px;
+    margin: 0;
+    padding: 0;
+
 }
 
 @font-face {
@@ -179,6 +189,8 @@ body{
             margin-left: 30%;
          }
 
+
+
         .edit_block{
             background-color: #4278B6;
             border-radius: 9px;
@@ -189,9 +201,7 @@ body{
             height: 600px;
             display: none; z-index: 9990;
         }
-        .edit_block form{
-            margin-top: 5%;
-        }
+
         .edit_block label{
             margin: 2% 2% 2% 12%;
             display: flex;
@@ -237,7 +247,7 @@ body{
 .user_list{
     float: left;
     width: 410px;
-    height: 970px;
+    height: 962px;
     background: rgba(170, 152, 185, 0.13);
     border-radius: 0px 9px 0px 0px;
 
@@ -290,35 +300,51 @@ body{
             float: left;
             margin-left: 10%;
             height: 800px;
-            width: 1000px;
+            width: 1150px;
         }
             .message_object{
-                float: right;
+                align-self: flex-end;
                 margin-top: 20px;
-                margin-left: 80%;
                 width: fit-content;
+                word-wrap: break-word;
+                max-width: 250px;
                 padding: 10px;
                 background: rgba(170, 152, 185, 0.28);
                 border-radius: 9px;
             }
+            .message_object p{
+                max-width: 250px;
+            }
+            .message_object label{
+                float: right;
+            }
             .message_object_friend{
-                float: left;
+                align-self: flex-start;
+                word-wrap: break-word;
+                max-width: 250px;
                 width: fit-content;
                 padding: 10px;
                 margin-top: 20px;
                 background: rgba(170, 152, 185, 0.28);
                 border-radius: 9px;
+            }
+            .message_object_friend p{
+                max-width: 250px;
+            }
+            .message_object_friend label{
+                float: left;
             }
 
 
     .send_message form{
         height: 2px;
-        width: 76%;
+        width: 78%;
     }
         .send_message label{
             display: none;
         }
             .send_message textarea{
+                float: left;
                 background: rgba(170, 152, 185, 0.28);
                 border-radius: 9px 0 0 9px;
                 border: none;
@@ -330,17 +356,29 @@ body{
                 outline: none;
                 padding-left: 10px;
                 padding-top: 4px;
-                margin-left: 25%;
+                margin-left: 20%;
              }
 
                 .send_message button{
-                    float: right;
+                    float: left;
                     width: 82px;
                     height: 40px;
                     background: rgba(86, 164, 255, 0.69);
                     border-radius: 0px 9px 9px 0px;
                     border: none;
                 }
+                .active {
+                    background: rgba(86, 164, 255, 0.69);
+                }
+                .inactive {
+                  background-color: #313131;
+                }
+                    .send_message #id_file{
+                        float: right;
+                        width: 100px;
+                        height: 40px;
+                        border-radius: 9px;
+                    }
 
 /*Contacts_List*/
 
@@ -467,6 +505,7 @@ body{
         background-color: #1c1b1b;
         padding-bottom: 5%;
     }
+
         .profile_link{
             margin-left: 0;
             font-size: 20px;

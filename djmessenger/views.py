@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import MessageForm, FileForm
+from .forms import MessageForm
 from .models import Message
 from django.db.models import Q
 from account.models import CustomUser
@@ -22,14 +22,15 @@ def profile_view(request):
         user_list = CustomUser.objects.all()
 
     # Edit_profile
-    user_upd_form = CustomUserChangeForm(instance=request.user)
+
     if request.method == 'POST':
         user_upd_form = CustomUserChangeForm(request.POST, request.FILES, instance=request.user)
         if user_upd_form.is_valid():
             user_upd_form.save()
             return redirect('profile')
-        else:
-            user_upd_form = CustomUserChangeForm(instance=request.user)
+    else:
+        user_upd_form = CustomUserChangeForm(instance=request.user)
+
     data = {
         'user_list': user_list,
         'user_upd_form': user_upd_form
@@ -75,19 +76,14 @@ def user_chat(request, userid):
 
     # Send_message
     if request.method == 'POST':
-        form = MessageForm(request.POST)
+        form = MessageForm(request.POST, request.FILES)
         if form.is_valid:
             chat_message = form.save(commit=False)
             chat_message.msg_sender = user
             chat_message.msg_receiver = friend
             chat_message.save()
     form = MessageForm
-    # Send_files
-    if request.method == 'POST':
-        file_form = FileForm(request.POST, request.FILES)
-        if file_form.is_valid():
-            file_form.save()
-    file_form = FileForm
+
     data = {
         'message_form': form,
         'message_list': message_list,
@@ -96,7 +92,6 @@ def user_chat(request, userid):
         'friend': friend,
         'friends': friends,
         'user_list': user_list,
-        'file_form': file_form,
         'num': rec_message_list.count(),
     }
     return render(request, 'djmessenger/user_chat.html', data)
@@ -107,7 +102,7 @@ def sent_messages(request, userid):
     user = request.user
     friend = CustomUser.objects.get(id=userid)
     data = json.loads(request.body)
-    new_chat = data["msg"]
+    new_chat = data['msg']
     new_chat_message = Message.objects.create(message=new_chat, msg_sender=user, msg_receiver=friend)
     return JsonResponse(new_chat_message.body, safe=False)
 

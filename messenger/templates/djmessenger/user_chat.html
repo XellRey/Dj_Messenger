@@ -14,7 +14,7 @@
                     {% for friend in friends %}
                         <div class="touch">
                             <div class="contacts_object">
-                                <img src="{{friend.contact.avatar.url}}">
+                                <img src="{{friend.profile.avatar.url}}">
                                 <p><a href="{% url 'user_chat' friend.profile.id %}">{{friend.profile.username}}</a></p>
                             </div>
                         </div>
@@ -56,12 +56,12 @@
                         {% if m.msg_sender == user and m.msg_receiver == friend %}
                             <div class="message_object">
                                 <p>{{m.message}}</p>
-                                <p>{{m.date}}</p>
+                                <label>{{m.date}}</label>
                             </div>
                         {% elif m.msg_sender == friend and m.msg_receiver == user %}
                             <div class="message_object_friend">
                                     <p>{{m.message}}</p>
-                                    <p>{{m.date}}</p>
+                                    <label>{{m.date}}</label>
                             </div>
                         {% endif %}
                     {% endfor %}
@@ -70,15 +70,10 @@
             <button id="scrollButton"> ВНИИИИИЗЗЗСЫСЫС</button>
             <script src="{% static 'js/scroll_to_bottom.js' %}"></script>
         <div class="send_message" id="msg_body">
-            <form method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                {{file_form}}
-
-            </form>
-            <form method="post" id="send_msg">
+            <form method="post" id="send_msg" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{message_form}}
-                <button  id="submit" type="submit">Send</button>
+                <button  id="submit" class="active" type="submit" oninput="checkTextLength()">Send</button>
             </form>
         </div>
     </div>
