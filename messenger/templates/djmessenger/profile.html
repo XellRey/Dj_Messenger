@@ -1,6 +1,8 @@
 {% extends '_base.html' %}
 {% load static %}
 {% block content %}
+
+{{blocked_list.block_users}}
 <div class="profile_block">
     <div class="user_list">
             <div class="profile">
@@ -32,9 +34,7 @@
                         </div>
                     </div>
                 {% endfor %}
-
         </div>
-
         <div class="account_block">
             <div class="profile">
                 <img src="{{request.user.avatar.url}}">
@@ -50,12 +50,24 @@
                     <transition name="slide-fade">
                     <div id='edit_block' class="edit_block">
                          <div class="profile">
-                            <img src="{{request.user.avatar.url}}">
+                            <h3>Edit Profile</h3>
                          </div>
                         <div class="edit">
                             <form method="post" enctype="multipart/form-data">
                                 {% csrf_token %}
-                                {{ user_upd_form }}
+                                {{ user_upd_form.email.label_tag }}
+                                {{ user_upd_form.email }}
+                                {{ user_upd_form.username.label_tag }}
+                                {{ user_upd_form.username }}
+                                {{ user_upd_form.first_name.label_tag }}
+                                {{ user_upd_form.first_name }}
+                                {{ user_upd_form.last_name.label_tag }}
+                                {{ user_upd_form.last_name }}
+                                {{ user_upd_form.description.label_tag }}
+                                {{ user_upd_form.description }}
+                                {{ user_upd_form.avatar.label_tag }}
+                                <img src="{{request.user.avatar.url}}">
+                                {{ user_upd_form.avatar }}
                                 <button type="submit">Save</button>
                             </form>
                         </div>
@@ -63,11 +75,19 @@
                     </transition>
                 </div>
                 <div class="edit_profile">
-                     <h3><a>Blocked Users</a></h3>
+                     <h3><a href="#">Blocked Users</a></h3>
+                    <div class="blocked_list">
+                        {% for b in blocked_list %}
+                            <div class="blocked_user">
+                                <img src="{{b.user.avatar.url}}">
+                                <p>{{b.user.username}}</p>
+                                <button>Unblock</button>
+                            </div>
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
         </div>
-
 </div>
 <script src="{% static 'js/edit_user_modal.js' %}"></script>
 {% endblock %}

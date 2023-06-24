@@ -1,5 +1,5 @@
 from django.contrib import admin
-from account.models import Contact
+from account.models import BlockedUser
 
 # Register your models here.
-admin.site.register(Contact)
+admin.site.register(BlockedUser)

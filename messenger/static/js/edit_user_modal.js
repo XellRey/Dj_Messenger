@@ -1,14 +1,13 @@
-
 var user_edit_modal = document.getElementById("edit_block");
 var btn = document.getElementById("edit_profile_btn");
-let isOpen = false;
+let isOpenU = false;
 
 btn.onclick = function() {
-  if (isOpen == false) {
+  if (isOpenU == false) {
     user_edit_modal.style.display = "block";
-    isOpen = true;
+    isOpenU = true;
   } else {
     user_edit_modal.style.display = "none";
-    isOpen = false;
+    isOpenU = false;
   }
 };

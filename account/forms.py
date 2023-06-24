@@ -11,6 +11,8 @@ class CustomUserCreationForm(UserCreationForm):
 
 
 class CustomUserChangeForm(UserChangeForm):
+    avatar = forms.FileField(widget=forms.FileInput(attrs={}))
+
     class Meta:
         model = get_user_model()
         fields = ('email', 'username', 'first_name', 'last_name', 'description', 'avatar')

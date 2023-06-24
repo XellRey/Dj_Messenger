@@ -1,13 +1,13 @@
 var cnt_list = document.getElementById("contacts_list");
 var cnt_btn = document.getElementById("contacts_btn");
-let isOpen = false;
+let isOpenC = false;
 
 cnt_btn.onclick = function() {
-  if (isOpen == false) {
+  if (isOpenC == false) {
     cnt_list.style.display = "block";
-    isOpen = true;
+    isOpenC = true;
   } else {
     cnt_list.style.display = "none";
-    isOpen = false;
+    isOpenC = false;
   }
 };

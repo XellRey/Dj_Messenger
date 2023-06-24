@@ -39,11 +39,7 @@
             <h3><a class="link" id="user_description_modal_btn">{{friend.username}}</a></h3>
             <div class="modal" id="user_description_modal">
                  <div class="user_description">
-<!--                    <form method="post">-->
-<!--                        {% csrf_token %}-->
-<!--                        {{add_contact_form}}-->
-<!--                    </form>-->
-                     <img src="{{friend.avatar.url}}">
+<a href="{% url 'add' operation='add' pk=friend.pk %}"><button  type="button">Add Friend</button></a>                     <img src="{{friend.avatar.url}}">
                      <h3>{{friend.username}}</h3>
                      <h5>{{friend.last_login}}</h5>
                  </div>
@@ -56,24 +52,36 @@
                         {% if m.msg_sender == user and m.msg_receiver == friend %}
                             <div class="message_object">
                                 <p>{{m.message}}</p>
+                                {% if m.file in message_list %}
+                                    <img src="{{m.files.url}}">
+                                {% endif %}
                                 <label>{{m.date}}</label>
                             </div>
                         {% elif m.msg_sender == friend and m.msg_receiver == user %}
                             <div class="message_object_friend">
                                     <p>{{m.message}}</p>
+                                    {% if m.file in message_list %}
+                                        <img src="{{m.files.url}}">
+                                    {% endif %}
                                     <label>{{m.date}}</label>
-                            </div>
+                             </div>
                         {% endif %}
                     {% endfor %}
+                            <button id="scrollButton"><img src="{% static 'img/arrow.png' %}"></button>
             </div>
         </div>
-            <button id="scrollButton"> ВНИИИИИЗЗЗСЫСЫС</button>
-            <script src="{% static 'js/scroll_to_bottom.js' %}"></script>
+             <script src="{% static 'js/scroll_to_bottom.js' %}"></script>
         <div class="send_message" id="msg_body">
             <form method="post" id="send_msg" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{message_form}}
-                <button  id="submit" class="active" type="submit" oninput="checkTextLength()">Send</button>
+                    {% if blocked_friend or blocked_user in  blocked_list %}
+                        <div class="blocked">
+                            Blocked
+                        </div>
+                    {% else %}
+                        <button  id="submit" class="active" type="submit" oninput="checkTextLength()">Send</button>
+                    {% endif %}
             </form>
         </div>
     </div>
