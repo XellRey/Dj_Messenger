@@ -14,8 +14,8 @@
                     {% for friend in friends %}
                         <div class="touch">
                             <div class="contacts_object">
-                                <img src="{{friend.profile.avatar.url}}">
-                                <p><a href="{% url 'user_chat' friend.profile.id %}">{{friend.profile.username}}</a></p>
+                                <img src="{{friend.friend.profile.avatar.url}}">
+                                <p><a href="{% url 'user_chat' friend.friend.profile.id %}">{{friend.friend.profile.username}}</a></p>
                             </div>
                         </div>
                     {% endfor %}
@@ -39,7 +39,9 @@
             <h3><a class="link" id="user_description_modal_btn">{{friend.username}}</a></h3>
             <div class="modal" id="user_description_modal">
                  <div class="user_description">
-<a href="{% url 'add' operation='add' pk=friend.pk %}"><button  type="button">Add Friend</button></a>                     <img src="{{friend.avatar.url}}">
+                     <img src="{{friend.avatar.url}}">
+                     <a href="{% url 'block' operation='block' pk=friend.pk %}"><button type="button">Block Friend</button></a>
+                     <a href="{% url 'add' operation='add' pk=friend.pk %}"><button type="button">Add Friend</button></a>
                      <h3>{{friend.username}}</h3>
                      <h5>{{friend.last_login}}</h5>
                  </div>

@@ -14,18 +14,22 @@ class CustomUser(AbstractUser):
 
 
 class Contact(models.Model):
-    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, default='0', blank=True)
-    profile = models.OneToOneField(CustomUser, on_delete=models.CASCADE, related_name='all_contacts')
+    profile = models.OneToOneField(CustomUser, on_delete=models.CASCADE, related_name='friend')
 
     def __str__(self):
         return self.profile.username
 
     @staticmethod
-    def add_friend(profile, new_friend):
-        contacts, created = Contact.objects.get_or_create(
-            profile=profile
+    def add_friend(user, new_friend):
+        contact_list, created = Contact.objects.get_or_create(
+            user=user
         )
-        contacts.user.add(new_friend)
+        contact_list.user.add(new_friend)
+
+
+class ContactList(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    friend = models.ForeignKey(Contact, on_delete=models.CASCADE)
 
 
 class BlockedUser(models.Model):
@@ -34,5 +38,9 @@ class BlockedUser(models.Model):
     def __str__(self):
         return self.user.username
 
-    def block_users(self):
-        pass
+    @staticmethod
+    def block_users(user, block_u):
+        block_list, created = BlockedUser.objects.get_or_create(
+            user=user
+        )
+        block_list.user.block(block_u)

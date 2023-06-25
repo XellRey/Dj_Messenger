@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'messenger.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Dj_Messenger',
+        'NAME': 'db1',
         'USER': 'postgres',
         'PASSWORD': 'admin',
         'HOST': 'localhost',

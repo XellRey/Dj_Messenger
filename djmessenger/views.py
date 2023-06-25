@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .forms import MessageForm
 from .models import Message
 from django.db.models import Q
-from account.models import CustomUser, BlockedUser, Contact
+from account.models import CustomUser, BlockedUser, Contact, ContactList
 from django.http import JsonResponse
 from account.forms import CustomUserChangeForm
 import json
@@ -73,7 +73,7 @@ def chat_view(request):
 def user_chat(request, userid):
     user = request.user
     friend = CustomUser.objects.get(id=userid)
-    friends = user.contacts.all()
+    friends = ContactList.objects.filter(user=user)
     message_list = Message.objects.order_by('date')
 
     try:
@@ -120,7 +120,6 @@ def user_chat(request, userid):
         'blocked_list': blocked_list,
         'blocked_user': blocked_user,
         'blocked_friend': blocked_friend
-
     }
     return render(request, 'djmessenger/user_chat.html', data)
 
@@ -128,7 +127,19 @@ def user_chat(request, userid):
 def add_new_friend(request, operation, pk):
     new_friend = CustomUser.objects.get(pk=pk)
     if operation == 'add':
-        Contact.add_friend(request.user, new_friend)
+        contact = Contact(profile=new_friend)
+        contact.save()
+        friend = Contact.objects.get(profile=new_friend)
+        contact_list = ContactList(user=request.user, friend=friend)
+        contact_list.save()
+        return redirect('profile')
+
+
+def block_user(request, operation, pk):
+    block_users = CustomUser.objects.get(pk=pk)
+    if operation == 'block':
+        block__user = BlockedUser(user=block_users)
+        block__user.save()
     return redirect('profile')
 
 

@@ -7,6 +7,7 @@ urlpatterns = [
     path('chat/', views.chat_view, name='chat'),
     path('<int:userid>', views.user_chat, name='user_chat'),
     path('add/operation/<operation>/<pk>/', views.add_new_friend, name='add'),
+    path('block/<operation>/<pk>/', views.block_user, name='block'),
     path('sent_msg/<str:userid>', views.sent_messages, name='sent_msg'),
     path('rec_msg/<str:userid>', views.received_messages, name="rec_msg"),
 ]

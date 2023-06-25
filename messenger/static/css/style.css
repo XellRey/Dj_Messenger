@@ -442,6 +442,10 @@ body{
                     border-radius: 0px 9px 9px 0px;
                     border: none;
                 }
+                .send_message img{
+                    width: 45px;
+                    height: 45px;
+                }
                 .active {
                     background: rgba(86, 164, 255, 0.69);
                 }
