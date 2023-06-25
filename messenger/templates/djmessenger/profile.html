@@ -16,8 +16,8 @@
                     {% for friend in friends %}
                         <div class="touch">
                             <div class="contacts_object">
-                                <img src="{{friend.profile.avatar.url}}">
-                                <p><a href="{% url 'user_chat' friend.profile.id %}">{{friend.profile.username}}</a></p>
+                                <img src="{{friend.friend.avatar.url}}">
+                                <p><a href="{% url 'user_chat' friend.friend.id %}">{{friend.friend.username}}</a></p>
                             </div>
                         </div>
                     {% endfor %}
@@ -79,9 +79,10 @@
                     <div class="blocked_list">
                         {% for b in blocked_list %}
                             <div class="blocked_user">
-                                <img src="{{b.user.avatar.url}}">
-                                <p>{{b.user.username}}</p>
-                                <button>Unblock</button>
+                                <img src="{{b.friend.avatar.url}}">
+                                <p>{{b.friend.username}}</p>
+                                <a href="{% url 'unblock' operation='unblock' pk=b.friend.pk %}"><button type="button">Unblock</button></a>
+
                             </div>
                         {% endfor %}
                     </div>

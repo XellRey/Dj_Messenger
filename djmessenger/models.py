@@ -10,4 +10,4 @@ class Message(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     msg_sender = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='msg_sender')
     msg_receiver = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='msg_receiver')
-    file = models.FileField(upload_to='uploads/', blank=True)
+    file = models.FileField(upload_to='uploads/', blank=True, null=True)

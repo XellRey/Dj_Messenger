@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .forms import MessageForm
 from .models import Message
 from django.db.models import Q
-from account.models import CustomUser, BlockedUser, Contact, ContactList
+from account.models import CustomUser, BlockedUser, ContactList
 from django.http import JsonResponse
 from account.forms import CustomUserChangeForm
 import json
@@ -21,8 +21,8 @@ def home_view(request):
 
 def profile_view(request):
     user = request.user
-    friends = user.contacts.all()
-    blocked_list = user.blocked_list.all()
+    friends = ContactList.objects.filter(user=user)
+    blocked_list = BlockedUser.objects.filter(user=user)
 
     if 'q' in request.GET:
         q = request.GET['q']
@@ -52,8 +52,7 @@ def profile_view(request):
 
 def chat_view(request):
     user = request.user
-    friends = user.contacts.all
-    print(friends)
+    friends = ContactList.objects.filter(user=user)
     # Search
     if 'q' in request.GET:
         q = request.GET['q']
@@ -78,12 +77,12 @@ def user_chat(request, userid):
 
     try:
         blocked_user = user.blocked_list.get(user_id=userid)
-        blocked_friend = friend.blocked_list.get(user_id=userid)
+        blocked_friend = BlockedUser.friend.get(friend=userid)
     except:
         blocked_friend = None
         blocked_user = None
 
-    blocked_list = user.blocked_list.all()
+    blocked_list = []
     rec_message_list = Message.objects.filter(msg_sender=friend, msg_receiver=user)
 
     if friend.id in blocked_list:
@@ -106,6 +105,7 @@ def user_chat(request, userid):
             chat_message.msg_sender = user
             chat_message.msg_receiver = friend
             chat_message.save()
+        return redirect('user_chat', userid)
     form = MessageForm
 
     data = {
@@ -127,10 +127,7 @@ def user_chat(request, userid):
 def add_new_friend(request, operation, pk):
     new_friend = CustomUser.objects.get(pk=pk)
     if operation == 'add':
-        contact = Contact(profile=new_friend)
-        contact.save()
-        friend = Contact.objects.get(profile=new_friend)
-        contact_list = ContactList(user=request.user, friend=friend)
+        contact_list = ContactList(user=request.user, friend=new_friend)
         contact_list.save()
         return redirect('profile')
 
@@ -138,8 +135,10 @@ def add_new_friend(request, operation, pk):
 def block_user(request, operation, pk):
     block_users = CustomUser.objects.get(pk=pk)
     if operation == 'block':
-        block__user = BlockedUser(user=block_users)
+        block__user = BlockedUser(user=request.user, friend=block_users)
         block__user.save()
+    elif operation == 'unblock':
+        BlockedUser.unblock_users(request.user, block_users)
     return redirect('profile')
 
 

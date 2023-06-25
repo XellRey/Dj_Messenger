@@ -14,8 +14,8 @@
                     {% for friend in friends %}
                         <div class="touch">
                             <div class="contacts_object">
-                                <img src="{{friend.friend.profile.avatar.url}}">
-                                <p><a href="{% url 'user_chat' friend.friend.profile.id %}">{{friend.friend.profile.username}}</a></p>
+                                <img src="{{friend.friend.avatar.url}}">
+                                <p><a href="{% url 'user_chat' friend.friend.id %}">{{friend.friend.username}}</a></p>
                             </div>
                         </div>
                     {% endfor %}
@@ -55,7 +55,7 @@
                             <div class="message_object">
                                 <p>{{m.message}}</p>
                                 {% if m.file in message_list %}
-                                    <img src="{{m.files.url}}">
+                                    <img src="{{m.file.url}}">
                                 {% endif %}
                                 <label>{{m.date}}</label>
                             </div>

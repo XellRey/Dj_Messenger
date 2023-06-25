@@ -14,8 +14,8 @@
                     {% for friend in friends %}
                         <div class="touch">
                             <div class="contacts_object">
-                                <img src="{{friend.profile.avatar.url}}">
-                                <p><a href="{% url 'user_chat' friend.profile.id %}">{{friend.profile.username}}</a></p>
+                                <img src="{{friend.friend.avatar.url}}">
+                                <p><a href="{% url 'user_chat' friend.friend.id %}">{{friend.friend.username}}</a></p>
                             </div>
                         </div>
                     {% endfor %}
