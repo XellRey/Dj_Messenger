@@ -85,10 +85,7 @@ def user_chat(request, userid):
     blocked_list = []
     rec_message_list = Message.objects.filter(msg_sender=friend, msg_receiver=user)
 
-    if friend.id in blocked_list:
-        print('xty')
-    else:
-        print('fff')
+
     # Search
     if 'q' in request.GET:
         q = request.GET['q']
@@ -138,7 +135,7 @@ def block_user(request, operation, pk):
         block__user = BlockedUser(user=request.user, friend=block_users)
         block__user.save()
     elif operation == 'unblock':
-        BlockedUser.unblock_users(request.user, block_users)
+        BlockedUser.objects.filter(user=request.user, friend=block_users).delete()
     return redirect('profile')
 
 
