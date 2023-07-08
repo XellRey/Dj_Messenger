@@ -39,11 +39,20 @@
             <h3><a class="link" id="user_description_modal_btn">{{friend.username}}</a></h3>
             <div class="modal" id="user_description_modal">
                  <div class="user_description">
-                     <img src="{{friend.avatar.url}}">
-                     <a href="{% url 'block' operation='block' pk=friend.pk %}"><button type="button">Block Friend</button></a>
-                     <a href="{% url 'add' operation='add' pk=friend.pk %}"><button type="button">Add Friend</button></a>
-                     <h3>{{friend.username}}</h3>
+                     <p>Last Login:</p>
                      <h5>{{friend.last_login}}</h5>
+                     <br>
+                         {% if blocked_friend %}
+                            <a href="{% url 'unblock' operation='unblock' pk=friend.pk %}"><button type="button">UnBlock</button></a>
+                         {% else %}
+                            <a href="{% url 'block' operation='block' pk=friend.pk %}"><button type="button">Block</button></a>
+                         {% endif %}
+
+                         {% if add_friend %}
+                            <a href="{% url 'remove' operation='remove' pk=friend.pk %}"><button type="button">Remove Friend</button> </a>
+                         {% else %}
+                            <a href="{% url 'add' operation='add' pk=friend.pk %}"><button type="button">Add Friend</button></a>
+                         {% endif %}
                  </div>
             </div>
         </div>
@@ -54,19 +63,20 @@
                         {% if m.msg_sender == user and m.msg_receiver == friend %}
                             <div class="message_object">
                                 <p>{{m.message}}</p>
-                                {% if m.file in message_list %}
-                                    <img src="{{m.file.url}}">
+                                {% if m.file %}
+                                    <img src="{{m.file.url}}" alt="none">
                                 {% endif %}
-                                <label>{{m.date}}</label>
+                                <label class="msg_date">{{m.date.time}}</label>
                             </div>
                         {% elif m.msg_sender == friend and m.msg_receiver == user %}
                             <div class="message_object_friend">
                                     <p>{{m.message}}</p>
-                                    {% if m.file in message_list %}
-                                        <img src="{{m.files.url}}">
+                                    {% if m.file %}
+                                        <img src="{{m.file.url}}" alt="none">
                                     {% endif %}
-                                    <label>{{m.date}}</label>
+                                <label class="msg_friend_date">{{m.date.time}}</label>
                              </div>
+
                         {% endif %}
                     {% endfor %}
                             <button id="scrollButton"><img src="{% static 'img/arrow.png' %}"></button>
@@ -76,14 +86,18 @@
         <div class="send_message" id="msg_body">
             <form method="post" id="send_msg" enctype="multipart/form-data">
                 {% csrf_token %}
-                {{message_form}}
-                    {% if blocked_friend or blocked_user in  blocked_list %}
-                        <div class="blocked">
-                            Blocked
-                        </div>
-                    {% else %}
-                        <button  id="submit" class="active" type="submit" oninput="checkTextLength()">Send</button>
-                    {% endif %}
+                <label for="id_file" class="file-label">
+                     <img src="https://cdn.icon-icons.com/icons2/1238/PNG/512/paperclip_83779.png"   >
+                 </label>
+                {{message_form.file}}
+                {{message_form.message}}
+                {% if blocked_friend or blocked_user %}
+                    <div class="blocked">
+                        Blocked
+                    </div>
+                {% else %}
+                    <button  id="submit" class="active" type="submit" oninput="checkTextLength()"><img src="{% static 'img/Send.png' %}"></button>
+                {% endif %}
             </form>
         </div>
     </div>

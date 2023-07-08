@@ -1,7 +1,5 @@
 from django.db import models
 from account.admin import CustomUser
-
-
 # Create your models here.
 
 

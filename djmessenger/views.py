@@ -23,6 +23,8 @@ def profile_view(request):
     user = request.user
     friends = ContactList.objects.filter(user=user)
     blocked_list = BlockedUser.objects.filter(user=user)
+    print(blocked_list)
+
 
     if 'q' in request.GET:
         q = request.GET['q']
@@ -53,6 +55,7 @@ def profile_view(request):
 def chat_view(request):
     user = request.user
     friends = ContactList.objects.filter(user=user)
+
     # Search
     if 'q' in request.GET:
         q = request.GET['q']
@@ -76,15 +79,22 @@ def user_chat(request, userid):
     message_list = Message.objects.order_by('date')
 
     try:
-        blocked_user = user.blocked_list.get(user_id=userid)
-        blocked_friend = BlockedUser.friend.get(friend=userid)
+        add_friend = ContactList.objects.get(friend=userid, user=user)
+    except:
+        add_friend = None
+
+    try:
+        blocked_friend = BlockedUser.objects.get(friend=userid, user=user)
     except:
         blocked_friend = None
+    try:
+        blocked_user = BlockedUser.objects.get(friend=user, user=userid)
+    except:
         blocked_user = None
 
-    blocked_list = []
-    rec_message_list = Message.objects.filter(msg_sender=friend, msg_receiver=user)
+    blocked_list = BlockedUser.objects.all()
 
+    rec_message_list = Message.objects.filter(msg_sender=friend, msg_receiver=user)
 
     # Search
     if 'q' in request.GET:
@@ -115,8 +125,9 @@ def user_chat(request, userid):
         'user_list': user_list,
         'num': rec_message_list.count(),
         'blocked_list': blocked_list,
+        'blocked_friend': blocked_friend,
         'blocked_user': blocked_user,
-        'blocked_friend': blocked_friend
+        'add_friend': add_friend,
     }
     return render(request, 'djmessenger/user_chat.html', data)
 
@@ -126,7 +137,10 @@ def add_new_friend(request, operation, pk):
     if operation == 'add':
         contact_list = ContactList(user=request.user, friend=new_friend)
         contact_list.save()
-        return redirect('profile')
+    if operation == 'remove':
+        ContactList.objects.filter(user=request.user, friend=new_friend).delete()
+    back = request.META.get('HTTP_REFERER')
+    return redirect(back, pk)
 
 
 def block_user(request, operation, pk):
@@ -136,7 +150,8 @@ def block_user(request, operation, pk):
         block__user.save()
     elif operation == 'unblock':
         BlockedUser.objects.filter(user=request.user, friend=block_users).delete()
-    return redirect('profile')
+    back = request.META.get('HTTP_REFERER')
+    return redirect(back, pk)
 
 
 # Async

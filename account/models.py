@@ -9,7 +9,6 @@ class CustomUser(AbstractUser):
     is_contact = models.BooleanField(default=False)
     username = models.CharField(unique=True)
     description = models.CharField(max_length=70, null=True, blank=True)
-    blocked_list = models.ManyToManyField('BlockedUser', related_name='blocked_users')
 
 
 class ContactList(models.Model):
@@ -29,7 +28,7 @@ class BlockedUser(models.Model):
     friend = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='block_u')
 
     def __str__(self):
-        return self.user.username
+        return self.friend.username
 
     @staticmethod
     def block_users(user, block_u):

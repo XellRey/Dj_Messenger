@@ -3,29 +3,29 @@
     margin: 0;
     padding: 0;
 }
-
 ::-webkit-scrollbar{
     width: 0;
 }
+@font-face {
+    font-family: 'Saira', sans-serif;
+}
+
 
 body{
-    width: 1900px;
-    height: 950px;
-    font-family: 'Alata', sans-serif;
+    overflow: hidden;
+    max-width: 1920px;
+    height: 960px;
+    font-family: 'Saira', sans-serif;
     background: #151515;
     background-size: cover;
 }
 
 .container{
-    width: 1900px;
-    height: 950px;
+    overflow: hidden;
+    width: 1920px;
+    height: 960px;
     margin: 0;
     padding: 0;
-
-}
-
-@font-face {
-    font-family: 'Alata', sans-serif;
 }
 
 .block2{
@@ -34,6 +34,531 @@ body{
     text-align: center;
 }
 
+
+
+
+/*Login*/
+.login_block{
+    color: white;
+    text-decoration: none;
+    width: 500px;
+    height: 250px;
+    left: 475px;
+    top: 438px;
+    margin-left: 37%;
+    margin-top: 13%;
+}
+    .login_block a{
+        margin-left: 40%;
+        text-decoration: underline;
+    }
+    .login_block ul{
+        display: none;
+    }
+    .login_block h1{
+        color: white;
+        font-size: 54px;
+        text-align: center;
+        margin-bottom: 5%;
+    }
+    .login_block input{
+        color: white;
+        margin-left: 1%;
+        outline: 0;
+        outline-offset: 0;
+        margin-bottom: 5%;
+        font-size: 25px;
+        width: 490px;
+        height: 50px;
+        left: 475px;
+        top: 438px;
+        background: none;
+        border-right: 2px solid #4278B6;
+        border-bottom: 2px solid #4278B6;
+        border-top: 2px solid #4278B6;
+        border-left: 2px solid #4278B6;
+        border-radius: 9px;
+        padding-left: 10px;
+    }
+    .login_block label{
+        margin-left: 5%;
+    }
+    .login_block button{
+        font-family: 'Saira', sans-serif;
+        margin-left: 17%;
+        margin-top: 5%;
+        width: 318px;
+        height: 80px;
+        font-size: 54px;
+        background: rgba(86, 164, 255, 0.69);
+        border-radius: 9px;
+        border: none;
+        padding-bottom: 50px;
+    }
+
+.login_form{
+    padding-bottom: 5%;
+    color: white;
+    font-size: 24px;
+}
+
+
+/*SignUp*/
+.signup_block{
+    width: 500px;
+    height: 250px;
+    left: 475px;
+    top: 438px;
+    margin-left: 37%;
+    margin-top: 9%;
+}
+    .signup_block a{
+        margin-left: 45%;
+        text-decoration: underline;
+    }
+    .signup_block h1{
+        color: white;
+        font-size: 54px;
+        text-align: center;
+        margin-bottom: 5%;
+    }
+    .signup_block form{
+        color: white;
+        font-size: 24px;
+        padding-bottom: 5%;
+    }
+    .signup_block input{
+        color: white;
+        margin-left: 3%;
+        padding-left: 10px;
+        outline: 0;
+        outline-offset: 0;
+        margin-bottom: 5%;
+        font-size: 25px;
+        width: 490px;
+        height: 50px;
+        left: 475px;
+        top: 438px;
+        background: rgba(170, 152, 185, 0.28);
+        border-right: 2px solid #4278B6;
+        border-bottom: 2px solid #4278B6;
+        border-top: 2px solid #4278B6;
+        border-left: 2px solid #4278B6;
+        border-radius: 9px;
+    }
+    .signup_block button{
+        font-family: 'Saira', sans-serif;
+        margin-left: 17%;
+        margin-top: 5%;
+        width: 318px;
+        height: 80px;
+        font-size: 54px;
+        background: rgba(86, 164, 255, 0.69);
+        border-radius: 9px;
+        border: none;
+        padding-bottom: 20px;
+    }
+        .signup_block li{
+            font-size: 0;
+        }
+        .helptext{
+            font-size: 0;
+        }
+/*Change_Password*/
+.change_password{
+    color: white;
+    text-decoration: none;
+    width: 500px;
+    height: 250px;
+    left: 475px;
+    top: 438px;
+    margin-left: 37%;
+    margin-top: 13%;
+}
+    .change_password a{
+        margin-left: 45%;
+        text-decoration: underline;
+    }
+    .change_password ul{
+        display: none;
+    }
+    .change_password h1{
+        color: white;
+        font-size: 54px;
+        text-align: center;
+        margin-bottom: 5%;
+    }
+    .change_password input{
+        color: white;
+        margin-left: 1%;
+        outline: 0;
+        outline-offset: 0;
+        margin-bottom: 5%;
+        font-size: 25px;
+        width: 490px;
+        height: 50px;
+        left: 475px;
+        top: 438px;
+        background: none;
+        border-right: 2px solid #4278B6;
+        border-bottom: 2px solid #4278B6;
+        border-top: 2px solid #4278B6;
+        border-left: 2px solid #4278B6;
+        border-radius: 9px;
+        padding-left: 10px;
+    }
+    .change_password label{
+        margin-left: 5%;
+    }
+    .change_password button{
+        font-family: 'Saira', sans-serif;
+        margin-left: 17%;
+        margin-top: 5%;
+        width: 318px;
+        height: 80px;
+        font-size: 54px;
+        background: rgba(86, 164, 255, 0.69);
+        border-radius: 9px;
+        border: none;
+        padding-bottom: 50px;
+    }
+
+.login_form{
+    padding-bottom: 5%;
+    color: white;
+    font-size: 24px;
+}
+
+/* Chat_block */
+.chat_block{
+    width: 1920px;
+    height: 945px;
+}
+
+.user_list{
+    float: left;
+    width: 410px;
+    height: 962px;
+    background: rgba(54, 54, 61, 0.71);
+    overflow: auto;
+}
+    .user_list input{
+        width: 350px;
+        height: 35px;
+        margin-left: 7%;
+        border-radius: 9px;
+        border: none;
+        outline: none;
+        font-size: 24px;
+        background: #3a3a3a;
+        color: white;
+        padding-left: 15px;
+        font-family: 'Saira', sans-serif;
+    }
+
+.profile{
+    width: 410px;
+    height: 111px;
+    background: rgb(95, 141, 197);
+    box-shadow: 2px 10px 7px 1px rgba(0, 0, 0, 0.49);
+    margin-bottom: 2%;
+
+}
+    .profile img{
+        width: 100px;
+        height: 100px;
+        border-radius: 55px;
+        float: left;
+        margin-top: 1.5%;
+        margin-left: 2%;
+    }
+
+    .profile h3{
+        padding-top: 7%;
+        padding-left: 5%;
+        margin-left: 25%;
+        font-size: 25px;
+    }
+
+    .profile h4{
+        margin-left: 30%;
+     }
+
+.contacts{
+    border-radius: 6px;
+    margin-top: 5%;
+    padding-top: 2%;
+    width: 410px;
+    height: 80px;
+    margin-bottom: 5%;
+    background-color: #1c1b1c;
+}
+    .contacts img{
+        margin-top: 2%;
+        float: left;
+        width: 55px;
+        height: 45px;
+        filter: invert(1);
+    }
+
+    .contacts h3{
+        float: left;
+        padding-top: 5%;
+    }
+
+.contacts_list{
+    padding-top: 5%;
+    display: none;
+    float: left;
+    width: 410px;
+    height: auto;
+    margin-bottom: 5%;
+}
+    .contacts_list img{
+        margin-top: 2px;
+        filter: none;
+        width: 55px;
+        height: 55px;
+    }
+
+.touch{
+    width: 410px;
+    height: 68px;
+}
+
+.contacts_object{
+    border-radius: 5px;
+    color: white;
+    background: #1c1b1b;
+    width: 407px;
+    height: 68px;
+}
+    .contacts_object img{
+        margin-left: 2%;
+        margin-top: 2%;
+        width: 50px;
+        height: 50px;
+        border-radius: 45px;
+        float: left;
+    }
+
+    .contacts_object p, a{
+        margin-left: 3%;
+        margin-top: 20px;
+        text-decoration: none;
+        color: white;
+        padding-top: 4%;
+    }
+
+
+/* Chat */
+.current_contact_chat{
+    box-shadow: inset 6px -2px 10px 1px rgba(0, 0, 0, 0.39);
+    color: white;
+    font-size: 20px;
+    padding-left: 30px;
+    padding-top: 12px;
+    margin-left: 410px;
+    height: 95px;
+    background: rgba(54, 54, 61, 0.71);
+}
+    .current_contact_chat img{
+        width: 75px;
+        height: 75px;
+        border-radius: 45px;
+        float: left;
+    }
+    .current_contact_chat h3{
+        margin-left: 10%;
+        margin-top: 1%;
+    }
+        .link{
+            margin-left: 0;
+            font-size: 25px;
+            text-decoration: none;
+            color: white;
+        }
+        .link:before {
+            cursor: pointer;
+            content: '';
+            width: 1610px;
+            position: absolute;
+            height: 100px;
+            top: 2px;
+            left: 410px;
+        }
+             .modal {
+                 display: none;
+                 position: fixed;
+                 width: 100%;
+                 height: 100%;
+                 overflow: auto;
+            }
+                .user_description{
+                    box-shadow: inset 0px 7px 16px 0px rgba(0, 0, 0, 0.49);
+                    margin-top: 40px;
+                    padding: 20px;
+                    width: 10%;
+                    height: 25%;
+                    background-color: #1c1c1c;
+                    border-radius: 0 0 9px 9px;
+                }
+                .user_description button{
+                    width: 150px;
+                    height: 40px;
+                    margin-bottom: 5%;
+                    border-radius: 5px;
+                    border: none;
+                    color: white;
+                    background: #232425;
+                }
+
+ .chat{
+    width: auto;
+    height: 800px;
+    background: #151515;
+    color: white;
+}
+
+.message_list{
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    float: left;
+    margin-left: 10%;
+    height: 780px;
+    width: 1150px;
+}
+
+.message_object{
+    align-self: flex-end;
+    margin-top: 20px;
+    width: fit-content;
+    word-wrap: break-word;
+    max-width: 250px;
+    padding: 10px;
+    background: rgba(170, 152, 185, 0.28);
+    border-radius: 9px;
+}
+    .message_object p{
+        display: inline-block;
+        margin-right: 10px;
+        max-width: 250px;
+    }
+    .message_object label{
+        float: right;
+    }
+    .message_object img{
+        border-radius: 5px;
+        width: 200px;
+        height: 180px;
+    }
+
+.msg_date{
+    display: inline;
+    margin-top: 5px;
+    font-size: 12px;
+    float: right;
+}
+
+.message_object_friend{
+    align-self: flex-start;
+    word-wrap: break-word;
+    max-width: 250px;
+    width: fit-content;
+    padding: 10px;
+    margin-top: 20px;
+    background: rgba(170, 152, 185, 0.28);
+    border-radius: 9px;
+}
+    .message_object_friend p{
+        display: inline-block;
+        margin-left: 10px;
+        max-width: 250px;
+    }
+    .message_object_friend label{
+        float: left;
+    }
+    .message_object_friend img{
+        border-radius: 5px;
+        width: 200px;
+        height: 180px;
+    }
+
+.msg_friend_date{
+    display: inline;
+    margin-top: 5px;
+    font-size: 12px;
+    float: left;
+}
+
+.send_message form{
+    height: 2px;
+    width: 78%;
+}
+        .send_message label{
+            filter: invert(1);
+            margin-right: 1%;
+            margin-left: 24%;
+            display: inline-block;
+            cursor: pointer;
+        }
+        .send_message textarea{
+            box-shadow: 4px 4px 1px 3px rgb(2 2 2 / 28%);
+            background: rgba(170, 152, 185, 0.28);
+            border-radius: 9px;
+            border: none;
+            width: 450px;
+            height: 40px;
+            resize: none;
+            font-size: 25px;
+            text-align: left;
+            outline: none;
+            padding-left: 10px;
+            padding-top: 4px;
+         }
+        .send_message button{
+            cursor:pointer;
+            margin-right: 8%;
+            float: right;
+            width: 89px;
+            height: 52px;
+            background: rgb(86 164 255 / 0%);
+            border-radius: 0px 9px 9px 0px;
+            border: none;
+        }
+        .send_message button img{
+            width: 55px;
+            height: 30px;
+        }
+        .send_message img{
+            width: 43px;
+            height: 43px;
+            margin-left: 2%;
+        }
+        .active {
+            background: rgba(86, 164, 255, 0.69);
+        }
+        .inactive {
+          background-color: #313131;
+        }
+        .send_message #id_file{
+           display: none;
+        }
+
+.blocked{
+    font-family: 'Saira', sans-serif;
+    padding-top: 8px;
+    text-align: center;
+    float: right;
+    width: 82px;
+    height: 42px;
+    background: rgba(192, 31, 31, 0.69);
+    border-radius: 9px 9px 9px 0px;
+    border: none;
+    margin-top: 2px;
+    margin-right: 128px;
+}
 
 #scrollButton{
     border: none;
@@ -53,514 +578,8 @@ body{
 
     }
 
-/*Login*/
 
-.login_block{
-    width: 500px;
-    height: 250px;
-    left: 475px;
-    top: 438px;
-    margin-left: 35%;
-    margin-top: 13%;
-}
-
-.login_block h1{
-    color: white;
-    font-size: 54px;
-    text-align: center;
-    margin-bottom: 5%;
-}
-
-.login_form{
-    color: white;
-    font-size: 24px;
-}
-
-    .login_block input{
-        margin-left: 1%;
-        outline: 0;
-        outline-offset: 0;
-        margin-bottom: 5%;
-        font-size: 25px;
-        width: 490px;
-        height: 50px;
-        left: 475px;
-        top: 438px;
-        background: none;
-        border-right: 2px solid #4278B6;
-        border-bottom: 2px solid #4278B6;
-        border-top: 2px solid #4278B6;
-        border-left: 2px solid #4278B6;
-        border-radius: 9px;
-        padding-left: 10px;
-    }
-
-        .login_block label{
-            margin-left: 5%;
-        }
-
-            .login_block button{
-                font-family: 'Alata', sans-serif;
-                margin-left: 17%;
-                margin-top: 5%;
-                width: 318px;
-                height: 80px;
-                font-size: 54px;
-                background: rgba(86, 164, 255, 0.69);
-                border-radius: 9px;
-                border: none;
-                padding-bottom: 20px;
-            }
-
-
-/*SignUp*/
-
-.signup_block{
-    width: 500px;
-    height: 250px;
-    left: 475px;
-    top: 438px;
-    margin-left: 35%;
-    margin-top: 9%;
-}
-
-.signup_block h1{
-    color: white;
-    font-size: 54px;
-    text-align: center;
-    margin-bottom: 5%;
-}
-
-.signup_block form{
-    color: white;
-    font-size: 24px;
-}
-
-    .signup_block input{
-            margin-left: 3%;
-            padding-left: 10px;
-            outline: 0;
-            outline-offset: 0;
-            margin-bottom: 5%;
-            font-size: 25px;
-            width: 490px;
-            height: 50px;
-            left: 475px;
-            top: 438px;
-            background: rgba(170, 152, 185, 0.28);
-            border-right: 2px solid #4278B6;
-            border-bottom: 2px solid #4278B6;
-            border-top: 2px solid #4278B6;
-            border-left: 2px solid #4278B6;
-            border-radius: 9px;
-    }
-
-
-
-        .signup_block button{
-            font-family: 'Alata', sans-serif;
-            margin-left: 17%;
-            margin-top: 5%;
-            width: 318px;
-            height: 80px;
-            font-size: 54px;
-            background: rgba(86, 164, 255, 0.69);
-            border-radius: 9px;
-            border: none;
-            padding-bottom: 20px;
-
-        }
-
-        .helptext{
-            font-size: 0;
-        }
-
-        .signup_block li{
-            font-size: 0;
-        }
-
-
-/*Chat*/
-
-.profile{
-    width: 410px;
-    height: 113px;
-    background: rgba(143, 195, 253, 0.68);
-    box-shadow: 2px 10px 7px 1px rgba(0, 0, 0, 0.25);
-    border-radius: 16px 16px 0 0;
-}
-    .profile img{
-        width: 100px;
-        height: 100px;
-        border-radius: 55px;
-        float: left;
-        margin-top: 1%;
-        margin-left: 2%;
-    }
-        .profile h3{
-            padding-top: 4%;
-            padding-left: 5%;
-            margin-left: 25%;
-            font-size: 25px;
-        }
-
-        .profile h4{
-            margin-left: 30%;
-         }
-
-        .edit_block{
-            background-color: #4278B6;
-            border-radius: 9px;
-            margin-left: 120%;
-            margin-top: -74%;
-            width: 410px;
-            height: 600px;
-            display: none; z-index: 9990;
-        }
-
-        .edit_block label{
-            margin: 2% 2% 2% 12%;
-            display: flex;
-            flex-direction: column;
-            font-size: 17px;
-        }
-        .edit_block input{
-            margin: 0 auto;
-            box-sizing: border-box;
-            position: center;
-            font-family: 'Alata', sans-serif;
-            display: flex;
-            flex-direction: column;
-            width: 300px;
-            height: 35px;
-            border-radius: 5px;
-            border: none;
-            outline: none;
-            font-size: 20px;
-            padding-left: 7px;
-        }
-        .edit_block #id_password{
-            display: none;
-        }
-        .edit_block ::-webkit-file-upload-button{
-            content: 'Select some files';
-            display: inline-block;
-            background: linear-gradient(top, #f9f9f9, #e3e3e3);
-            border: 1px solid #999;
-            border-radius: 3px;
-            padding: 5px 8px;
-            outline: none;
-            white-space: nowrap;
-            -webkit-user-select: none;
-            cursor: pointer;
-            text-shadow: 1px 1px #fff;
-            font-weight: 700;
-            font-size: 10pt;
-        }
-        .edit_block #id_avatar{
-            color: transparent;
-            margin-top: -12%;
-            margin-left: 25%;
-        }
-        .edit_block img{
-            margin-left: 12%;
-            border-radius: 55px;
-            background-color: rgba(52, 52, 52, 0.82);
-            width: 55px;
-            height: 55px;
-        }
-        .edit_block button{
-            font-family: 'Alata', sans-serif;
-            font-size: 20px;
-            float: right;
-            width: 70px;
-            height: 50px;
-            margin-right: 20px;
-            border: none;
-            background: none;
-            cursor: pointer;
-            margin-top: -5%;
-        }
-
-        .blocked_list{
-            overflow: auto;
-            padding-left: 2%;
-            padding-right: 2%;
-            padding-top: 17px;
-            background-color: #2c2b2b;
-            height: 232px;
-            width: 390px;
-            margin-top: 3.2%;
-            border-radius: 0 0 5px 5px;
-        }
-        .blocked_user{
-            padding-top: 10px;
-            padding-left: 10px;
-            color: white;
-            background: #1f1f1f;
-            width: 375px;
-            height: 68px;
-            margin-bottom: 2%;
-            border-radius: 5px;
-        }
-            .blocked_user img{
-                border-radius: 45px;
-                width: 45px;
-                height: 45px;
-                float: left;
-            }
-            .blocked_user p{
-
-            }
-
-
-.chat_block{
-    width: 1920px;
-    height: 935px;
-}
-
-.user_list{
-    float: left;
-    width: 410px;
-    height: 962px;
-    background: rgba(170, 152, 185, 0.13);
-    border-radius: 0px 9px 0px 0px;
-    overflow: auto;
-}
-    .user_list input{
-        width: 350px;
-        height: 35px;
-        margin-left: 7%;
-        border-radius: 9px;
-        border: none;
-        outline: none;
-        font-size: 24px;
-        background: #3a3a3a;
-        color: white;
-        padding-left: 15px;
-        font-family: 'Alata', sans-serif;
-    }
-
-.current_contact_chat{
-    color: white;
-    font-size: 20px;
-    padding-left: 30px;
-    padding-top: 12px;
-    margin-left: 410px;
-    height: 95px;
-    background: #1C1B1B;
-    border-radius: 9px;
-}
-    .current_contact_chat img{
-        width: 75px;
-        height: 75px;
-        border-radius: 45px;
-        float: left;
-    }
-        .current_contact_chat h3{
-            margin-left: 10%;
-            margin-top: 1%;
-        }
-
-    .chat{
-        width: auto;
-        height: 800px;
-        background: #151515;
-        color: white;
-    }
-        .message_list{
-            display: flex;
-            flex-direction: column;
-            overflow: auto;
-            float: left;
-            margin-left: 10%;
-            height: 780px;
-            width: 1150px;
-        }
-            .message_object{
-                align-self: flex-end;
-                margin-top: 20px;
-                width: fit-content;
-                word-wrap: break-word;
-                max-width: 250px;
-                padding: 10px;
-                background: rgba(170, 152, 185, 0.28);
-                border-radius: 9px;
-            }
-            .message_object p{
-                max-width: 250px;
-            }
-            .message_object label{
-                float: right;
-            }
-            .message_object_friend{
-                align-self: flex-start;
-                word-wrap: break-word;
-                max-width: 250px;
-                width: fit-content;
-                padding: 10px;
-                margin-top: 20px;
-                background: rgba(170, 152, 185, 0.28);
-                border-radius: 9px;
-            }
-            .message_object_friend p{
-                max-width: 250px;
-            }
-            .message_object_friend label{
-                float: left;
-            }
-
-
-    .send_message form{
-        height: 2px;
-        width: 78%;
-    }
-        .send_message label{
-            display: none;
-        }
-            .send_message textarea{
-                float: left;
-                background: rgba(170, 152, 185, 0.28);
-                border-radius: 9px 0 0 9px;
-                border: none;
-                width: 600px;
-                height: 40px;
-                resize: none;
-                font-size: 25px;
-                text-align: left;
-                outline: none;
-                padding-left: 10px;
-                padding-top: 4px;
-                margin-left: 20%;
-             }
-
-                .send_message button{
-                    float: left;
-                    width: 82px;
-                    height: 40px;
-                    background: rgba(86, 164, 255, 0.69);
-                    border-radius: 0px 9px 9px 0px;
-                    border: none;
-                }
-                .send_message img{
-                    width: 45px;
-                    height: 45px;
-                }
-                .active {
-                    background: rgba(86, 164, 255, 0.69);
-                }
-                .inactive {
-                  background-color: #313131;
-                }
-                    .send_message #id_file{
-                        float: right;
-                        width: 100px;
-                        height: 40px;
-                        border-radius: 9px;
-                    }
-
-/*Contacts_List*/
-
-.touch{
-
-    width: 405px;
-    height: 68px;
-}
-.contacts_object{
-    color: white;
-    background: #1C1B1B;
-    width: 405px;
-    height: 68px;
-    margin-bottom: 2%;
-
-
-}
-    .contacts_object img{
-        margin-left: 2%;
-        margin-top: 2%;
-        width: 50px;
-        height: 50px;
-        border-radius: 45px;
-        float: left;
-    }
-
-    .contacts_object p, a{
-        margin-left: 3%;
-        margin-top: 20px;
-        text-decoration: none;
-        color: white;
-        padding-top: 3%;
-    }
-
-
-    .link{
-        margin-left: 0;
-        font-size: 25px;
-        text-decoration: none;
-        color: white;
-    }
-    .link:before {
-        content: '';
-        width: 1510px;
-        position: absolute;
-        height: 100px;
-        top: 2px;
-        left: 410px;
-    }
-
-
-     .modal {
-         display: none;
-         position: fixed;
-         width: 100%;
-         height: 100%;
-         overflow: auto;
-    }
-.user_description{
-    margin-top: 15%;
-    margin-left: 15%;
-    padding: 20px;
-    width: 20%;
-    height: 40%;
-    background-color: #3a3a3a;
-    border: 1px solid #888;
-    border-radius: 9px;
-}
-
-.contacts{
-    padding-top: 2%;
-    width: 405px;
-    height: 80px;
-    margin-bottom: 5%   ;
-    background-color: #1c1b1b;
-}
-    .contacts img{
-        margin-top: 2%;
-        float: left;
-        width: 55px;
-        height: 45px;
-        filter: invert(1);
-    }
-    .contacts h3{
-        float: left;
-        padding-top: 4%;
-    }
-.contacts_list{
-    display: none;
-    float: left;
-    width: 410px;
-    height: auto;
-    border-right: 4px solid #4278B6;
-    margin-bottom: 5%;
-}
-    .contacts_list img{
-        margin-top: 2px;
-        filter: none;
-        width: 55px;
-        height: 55px;
-    }
-
-
+/* Profile*/
 .account_block{
     width: 410px;
     height: 600px;
@@ -568,54 +587,202 @@ body{
     float: left;
     border-radius: 9px;
     margin-left: 5%;
-    margin-top: 2%;
+    margin-top: 9%;
 }
-    .profile_description{
-        padding-top: 5%;
-        padding-left: 2%;
-        height: 80px;
-    }
-        .profile_description h3{
-            margin-left: 2%;
-            margin-top: 1.5%;
-        }
-    .edit_profile{
-        border-radius: 3px;
-        margin-top: 20px;
-        width: 390px;
-        height: 50px;
-        background-color: #1c1b1b;
-        padding-bottom: 5%;
+
+.profile_description{
+    padding-top: 5%;
+    padding-left: 2%;
+    height: 80px;
+}
+    .profile_description h3{
+        margin-left: 2%;
+        margin-top: 1.5%;
     }
 
+.edit_profile{
+    border-radius: 3px;
+    margin-top: 20px;
+    width: 390px;
+    height: 50px;
+    background-color: #1c1b1b;
+}
+    .edit_profile h3{
+        padding-top: 15px;
+        padding-left: 5px;
+    }
         .profile_link{
-            margin-left: 0;
             font-size: 20px;
             text-decoration: none;
             color: white;
         }
-            .profile_link:before {
-                content: '';
-                width: 390px;
-                position: absolute;
-                height: 50px;
-                top: 288px;
-                left: 515px;
-            }
-        .edit_profile h3{
-            padding-top: 10px;
-            padding-left: 20px;
+        .profile_link:before {
+            content: '';
+            width: 390px;
+            position: absolute;
+            height: 50px;
+            top: 418px;
+            left: 515px;
         }
+.edit form{
+    margin-top: 8%;
+}
+.edit_block{
+    background-color: #4278B6;
+    border-radius: 9px;
+    margin-left: 240%;
+    margin-top: -72.5%;
+    width: 410px;
+    height: 600px;
+    display: none; z-index: 9990;
+}
+    .edit_block label{
+        margin: 2% 2% 2% 12%;
+        display: flex;
+        flex-direction: column;
+        font-size: 17px;
+    }
+    .edit_block input{
+        margin: 0 auto;
+        box-sizing: border-box;
+        position: center;
+        font-family: 'Saira', sans-serif;
+        display: flex;
+        flex-direction: column;
+        width: 300px;
+        height: 35px;
+        border-radius: 5px;
+        border: none;
+        outline: none;
+        font-size: 20px;
+        padding-left: 7px;
+    }
+    .edit_block #id_password{
+        display: none;
+    }
+    .edit_block ::-webkit-file-upload-button{
+        content: 'Select some files';
+        display: inline-block;
+        background: linear-gradient(top, #f9f9f9, #e3e3e3);
+        border: 1px solid #999;
+        border-radius: 3px;
+        padding: 5px 8px;
+        outline: none;
+        white-space: nowrap;
+        -webkit-user-select: none;
+        cursor: pointer;
+        text-shadow: 1px 1px #fff;
+        font-weight: 700;
+        font-size: 10pt;
+    }
+    .edit_block #id_avatar{
+        color: transparent;
+        margin-top: -12%;
+        margin-left: 25%;
+    }
+    .edit_block img{
+        margin-left: 12%;
+        border-radius: 55px;
+        background-color: rgba(52, 52, 52, 0.82);
+        width: 55px;
+        height: 55px;
+    }
+    .edit_block button{
+        font-family: 'Saira', sans-serif;
+        font-size: 20px;
+        float: right;
+        width: 70px;
+        height: 50px;
+        margin-right: 20px;
+        border: none;
+        background: none;
+        cursor: pointer;
+        margin-top: -5%;
+    }
 
-        .blocked{
-            font-family: 'Alata', sans-serif;
-            padding-top: 6px;
-            text-align: center;
-            float: left;
-            width: 82px;
-            height: 42px;
-            background: rgba(192, 31, 31, 0.69);
-            border-radius: 0px 9px 9px 0px;
-            border: none;
-            margin-top: -1px;
-        }
+.blocklist_block{
+    display: none;
+    background-color: #4278B6;
+    border-radius: 9px;
+    margin-left: 120%;
+    margin-top: -89.5%;
+    width: 410px;
+    height: 600px;
+    z-index: 9990;
+}
+    .blocklist_title{
+        padding-top: 1%;
+        width: 410px;
+        height: 71px;
+        background: rgb(95, 141, 197);
+        box-shadow: 2px 10px 7px 1px rgba(0, 0, 0, 0.49);
+        margin-bottom: 2%;
+    }
+    .blocklist_title h3{
+        text-align: center;
+    }
+.blocked_list{
+    height: 500px;
+    margin-left: 2%;
+    overflow: auto;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-top: 17px;
+    width: 390px;
+    margin-top: 3.2%;
+    border-radius: 0 0 5px 5px;
+}
+
+.blocked_user{
+    padding: 10px 10px 10px 10px;
+    color: white;
+    background: #1f1f1f;
+    width: 375px;
+    height: 68px;
+    margin-bottom: 2%;
+    border-radius: 5px;
+}
+    .blocked_user img{
+        border-radius: 45px;
+        width: 45px;
+        height: 45px;
+        float: left;
+        margin-right: 2%;
+    }
+    .blocked_user p{
+        padding-bottom: 2%;
+    }
+    .blocked_user button{
+        float: right;
+        border: none;
+        height: 20px;
+        width: 70px;
+        border-radius: 3px;
+    }
+
+.change_password_link{
+    font-size: 20px;
+    text-decoration: none;
+    color: white;
+}
+     .change_password_link:before{
+         content: '';
+         width: 390px;
+         position: absolute;
+         height: 50px;
+         top: 558px;
+         left: 515px;
+     }
+.exit_link{
+    font-size: 20px;
+    text-decoration: none;
+    color: white;
+}
+    .exit_link:before{
+        content: '';
+        width: 390px;
+        position: absolute;
+        height: 50px;
+        top: 628px;
+        left: 515px;
+    }

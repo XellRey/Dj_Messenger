@@ -14,5 +14,4 @@ class MessageForm(forms.ModelForm):
             }
             ),
             'file': forms.FileInput(attrs={})
-
         }
