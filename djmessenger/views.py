@@ -160,7 +160,7 @@ def sent_messages(request, userid):
     friend = CustomUser.objects.get(id=userid)
     data = json.loads(request.body)
     new_chat = data['msg']
-    new_chat_message = Message.objects.create(message=new_chat, file=new_chat, msg_sender=user, msg_receiver=friend)
+    new_chat_message = Message.objects.create(message=new_chat, msg_sender=user, msg_receiver=friend)
     return JsonResponse(new_chat_message.body, safe=False)
 
 
