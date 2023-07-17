@@ -15,8 +15,8 @@
 
 body{
     overflow: hidden;
-    max-width: 1920px;
-    height: 960px;
+    max-width: 100vw;
+    height: 100vh;
     font-family: 'Saira', sans-serif;
     background: #151515;
     background-size: cover;
@@ -383,7 +383,7 @@ body{
         .link:before {
             cursor: pointer;
             content: '';
-            width: 1610px;
+            width: 74vw;
             position: absolute;
             height: 100px;
             top: 2px;
@@ -726,6 +726,20 @@ body{
     .blocklist_title h3{
         text-align: center;
     }
+    .blocklist_link{
+        font-size: 20px;
+        text-decoration: none;
+        color: white;
+    }
+    .blocklist_link:before{
+         content: '';
+         width: 390px;
+         position: absolute;
+         height: 50px;
+         top: 488px;
+         left: 500px;
+    }
+
 .blocked_list{
     height: 500px;
     margin-left: 2%;
@@ -792,32 +806,95 @@ body{
         left: 515px;
     }
 
+@media screen and (max-width: 2560px){
+    .account_block {
+        margin-left: 13%;
+    }
+    .profile_link:before {
+            top: 495px;
+            left: 750px;
+    }
+    .blocklist_link:before{
+         top: 565px;
+         left: 750px;
+    }
+    .change_password_link:before{
+         top: 635px;
+         left: 750px;
+     }
+    .exit_link:before{
+        top: 705px;
+        left: 750px;
+    }
 
-@media screen and (max-width: 2048px){
+
+    .current_contact_chat h3 {
+        margin-left: 4vw;
+        margin-top: 1.5vh;
+    }
+    .user_description{
+        width: 8%;
+    }
+
+    #scrollButton {
+        margin-left: 70vw;
+        margin-top: 75vh;
+    }
     .message_list{
-        height: 83vh;
-        width: 68vw;
+        height: 82vh;
+        width: 70vw;
     }
     .send_message textarea{
-        width: 29vw;
+        width: 40vw;
     }
     .blocked{
         margin-right: 55px;
     }
     .send_message button{
-        margin-right: 3.5%;
+        margin-right: -4%;
     }
     .send_message button img{
-        width: 78px;
-        height: 39px;
+        width: 70px;
+        height: 40px;
     }
-    #scrollButton{
-        margin-left: 65%;
-        margin-top: 42%;
+    .blocked {
+        width: 115px;
+        height: 52px;
+        font-size: 25px;
+        margin-right: -103px;
     }
 }
 
+
+
 @media screen and (max-width: 1920px){
+    #scrollButton {
+        margin-left: 65vw;
+        margin-top: 73vh;
+    }
+    .current_contact_chat h3 {
+        margin-left: 6vw;
+        margin-top: 1.5vh;
+    }
+    .account_block{
+        margin-left: 5%;
+    }
+    .profile_link:before {
+        top: 418px;
+        left: 515px;
+    }
+    .blocklist_link:before{
+         top: 488px;
+         left: 500px;
+    }
+    .change_password_link:before{
+         top: 558px;
+         left: 515px;
+     }
+    .exit_link:before{
+        top: 628px;
+        left: 515px;
+    }
      .message_list{
          width: 63vw;
          height: 84vh;
@@ -833,7 +910,34 @@ body{
         width: 66vw;
         height: 77vh;
     }
+    .user_description{
+        width: 10%;
+    }
     .blocked{
+        font-size: 16px;
+        width: 82px;
+        height: 42px;
         margin-right: 2px;
+    }
+}
+
+@media screen and (max-width: 1600px){
+    .message_list{
+        width: 58vw;
+        height: 77vh;
+    }
+    .send_message textarea {
+        width: 24vw;
+        height: 4vh;
+    }
+    .chat {
+        height: 710px;
+    }
+    .user_description {
+        width: 10%;
+    }
+    #scrollButton {
+        margin-left: 57vw;
+        margin-top: 73vh;
     }
 }
