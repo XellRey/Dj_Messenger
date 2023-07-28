@@ -9,7 +9,7 @@
    <img src="https://img.shields.io/badge/MIT-%20?label=License&color=%23b0585e" alt="License">
 </p>
 
-## About
+## About Messenger
 
 <ol>
   <li>Sent messages.</li>
