@@ -1,5 +1,6 @@
 {% extends '_base.html' %}
 {% load static %}
+
 {% block content %}
     <div class="chat_block">
         <div class="user_list">
@@ -24,14 +25,23 @@
                 <form method="get">
                     <input class="search_contacts" name="q" placeholder="Search">
                 </form>
-                {% for u in user_list %}
-                    <div class="touch">
-                        <div class="contacts_object">
-                            <img src="{{u.avatar.url}}">
-                            <p><a href="{% url 'user_chat' u.id %}">{{u.username}}</a> </p>
+                {% for u in search_list %}
+                        <div class="touch">
+                            <div class="contacts_object">
+                                <img src="{{u.avatar.url}}">
+                                <p><a href="{% url 'user_chat' u.id %}">{{u.username}}</a> </p>
+                            </div>
                         </div>
-                    </div>
-                {% endfor %}
+               {% endfor %}
+               {% for u in user_list %}
+                        <div class="touch">
+                            <div class="contacts_object">
+                                <img src="{{u.receiver_user.avatar.url}}">
+                                <p><a href="{% url 'user_chat' u.receiver_user.id %}">{{u.receiver_user.username}}</a></p>
+                            </div>
+                        </div>
+               {% endfor %}
+
         </div>
         <div class="block2">
             select a chat

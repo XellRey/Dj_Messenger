@@ -1,8 +1,7 @@
 {% extends '_base.html' %}
 {% load static %}
-{% block content %}
 
-{{blocked_list.block_users}}
+{% block content %}
 <div class="profile_block">
     <div class="user_list">
             <div class="profile">
@@ -26,11 +25,19 @@
                 <form method="get">
                     <input class="search_contacts" name="q" placeholder="Search">
                 </form>
+                {% for u in search_list %}
+                        <div class="touch">
+                            <div class="contacts_object">
+                                <img src="{{u.avatar.url}}">
+                                <p><a href="{% url 'user_chat' u.id %}">{{u.username}}</a> </p>
+                            </div>
+                        </div>
+                {% endfor %}
                 {% for u in user_list %}
                     <div class="touch">
                         <div class="contacts_object">
-                            <img src="{{u.avatar.url}}">
-                            <p><a href="{% url 'user_chat' u.id %}">{{u.username}}</a> </p>
+                            <img src="{{u.receiver_user.avatar.url}}">
+                            <p><a href="{% url 'user_chat' u.receiver_user.id %}">{{u.receiver_user.username}}</a></p>
                         </div>
                     </div>
                 {% endfor %}

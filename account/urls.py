@@ -3,6 +3,6 @@ from . import views
 
 
 urlpatterns = [
-    path('signup/', views.sing_up_view, name='signup'),
-    path('password-change/', views.PasswordChangeView.as_view(template_name='registration/password_change_form.html'), name='password_change'),
+    path('signup/', views.sing_up_view, name='signup'),     # .../accounts/signup/
+    path('password-change/', views.change_password, name='password_change'),     # .../accounts/password-change/
 ]

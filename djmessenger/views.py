@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import MessageForm
-from .models import Message
+from .models import Message, UserList
 from django.db.models import Q
 from account.models import CustomUser, BlockedUser, ContactList
 from django.http import JsonResponse
@@ -9,29 +9,23 @@ import json
 # Create your views here.
 
 
-def home_view(request):
-    friend = 'test'
-    block = ['test']
-    if friend in block:
-        print('friend_block')
-    else:
-        print('meow')
-    return render(request, 'djmessenger/homepage.html')
-
-
+# Profile_Page
 def profile_view(request):
+    if not request.user.is_authenticated:
+        return redirect('signup')
+
     user = request.user
     friends = ContactList.objects.filter(user=user)
     blocked_list = BlockedUser.objects.filter(user=user)
-    print(blocked_list)
-
 
     if 'q' in request.GET:
         q = request.GET['q']
         search = Q(Q(username__icontains=q))
-        user_list = CustomUser.objects.filter(search)
+        search_list = CustomUser.objects.filter(search)
+        user_list = None
     else:
-        user_list = CustomUser.objects.all()
+        search_list = None
+        user_list = UserList.objects.filter(user=user)
 
     # Edit_profile
 
@@ -48,11 +42,16 @@ def profile_view(request):
         'user_upd_form': user_upd_form,
         'friends': friends,
         'blocked_list': blocked_list,
+        'search_list': search_list,
     }
     return render(request, 'djmessenger/profile.html', data)
 
 
+# Home
 def chat_view(request):
+    if not request.user.is_authenticated:
+        return redirect('signup')
+
     user = request.user
     friends = ContactList.objects.filter(user=user)
 
@@ -60,24 +59,31 @@ def chat_view(request):
     if 'q' in request.GET:
         q = request.GET['q']
         search = Q(Q(username__icontains=q))
-        user_list = CustomUser.objects.filter(search)
+        search_list = CustomUser.objects.filter(search)
+        user_list = None
     else:
-        user_list = CustomUser.objects.all()
+        search_list = None
+        user_list = UserList.objects.filter(user=user)
 
     data = {
         'user_list': user_list,
         'friends': friends,
         'user': user,
+        'search_list': search_list,
     }
     return render(request, 'djmessenger/chat.html', data)
 
 
+# User_Chat_Page
 def user_chat(request, userid):
+    if not request.user.is_authenticated:
+        return redirect('signup')
+
     user = request.user
     friend = CustomUser.objects.get(id=userid)
     friends = ContactList.objects.filter(user=user)
     message_list = Message.objects.order_by('date')
-
+    lm = Message.objects.all()
     try:
         add_friend = ContactList.objects.get(friend=userid, user=user)
     except:
@@ -100,18 +106,37 @@ def user_chat(request, userid):
     if 'q' in request.GET:
         q = request.GET['q']
         search = Q(Q(username__icontains=q))
-        user_list = CustomUser.objects.filter(search)
+        search_list = CustomUser.objects.filter(search)
+        user_list = None
     else:
-        user_list = CustomUser.objects.all()
+        search_list = None
+        user_list = UserList.objects.filter(user=user)
 
     # Send_message
     if request.method == 'POST':
+        new_chat = UserList()
+        receiver_chat = UserList()
         form = MessageForm(request.POST, request.FILES)
         if form.is_valid:
-            chat_message = form.save(commit=False)
-            chat_message.msg_sender = user
-            chat_message.msg_receiver = friend
-            chat_message.save()
+            if UserList.objects.filter(user=user, receiver_user=friend):
+                chat_message = form.save(commit=False)
+                chat_message.msg_sender = user
+                chat_message.msg_receiver = friend
+                chat_message.save()
+            else:
+                new_chat.user = user
+                new_chat.receiver_user = friend
+                new_chat.save()
+
+                receiver_chat.user = friend
+                receiver_chat.receiver_user = user
+                receiver_chat.save()
+
+                chat_message = form.save(commit=False)
+                chat_message.msg_sender = user
+                chat_message.msg_receiver = friend
+                chat_message.save()
+
         return redirect('user_chat', userid)
     form = MessageForm
 
@@ -128,10 +153,13 @@ def user_chat(request, userid):
         'blocked_friend': blocked_friend,
         'blocked_user': blocked_user,
         'add_friend': add_friend,
+        'search_list': search_list,
+        'lm': lm,
     }
     return render(request, 'djmessenger/user_chat.html', data)
 
 
+# Add_Friend_Func
 def add_new_friend(request, operation, pk):
     new_friend = CustomUser.objects.get(pk=pk)
     if operation == 'add':
@@ -143,6 +171,7 @@ def add_new_friend(request, operation, pk):
     return redirect(back, pk)
 
 
+# Block_User_Func
 def block_user(request, operation, pk):
     block_users = CustomUser.objects.get(pk=pk)
     if operation == 'block':
