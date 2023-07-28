@@ -1,6 +1,6 @@
 
 <p align="center">
-  <img src="https://i.ibb.co/10L8p0M/Logo-v2-3.png" width="100">
+  <img src="https://i.ibb.co/9cmtJQF/Group-4.png" width="600">
 </p>
 
 <p align="center">
@@ -22,9 +22,10 @@
 
 
 ## Screenshots 
+
 <img src="https://i.ibb.co/mJq2B4w/Screenshot.png" alt="Screenshot">
-<img src="https://i.ibb.co/WftL0J3/Screenshot.png" alt="Screenshot">
-<a href="https://ibb.co/M2hnS8K"><img src="https://i.ibb.co/FxW63sc/Screenshot-1.png" alt="Screenshot-1"></a>
+<img src="https://i.ibb.co/fGgLPdc/Screenshot-4.png" alt="Screenshot-4" border="0">
+</a><img src="https://i.ibb.co/PcKtkBT/Screenshot-2.png" alt="Screenshot-2">
 
 ## Developers
 
