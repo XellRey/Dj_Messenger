@@ -16,7 +16,7 @@
   <li>Sent Images.</li>
   <li>Receiving messages in real time (Currently does not work with images).</li>
   <li>Add/Remove Users to Contacts.</li>
-  <li>Block/Ublock Users.</li>
+  <li>Block/Unblock Users.</li>
   <li>Edit profile and change password.</li>
 </ol>
 
